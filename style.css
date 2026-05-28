@@ -4259,7 +4259,7 @@ img { max-width: 100%; display: block; }
     .brands-grid  { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .brand-card   { padding: 22px 14px; }
 }
-/* ── Project Search Box ─────────────────────────── */
+
 .proj-search-wrap {
     margin-top: 20px;
     display: flex;
