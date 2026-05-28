@@ -121,7 +121,8 @@
                     </p>
                 </div>
 
-                <form class="contact-form" id="contactForm" novalidate>
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/xwvzagpq" method="POST" novalidate>
+                    <input type="hidden" name="_subject" value="New Project Enquiry — Aspure Project Services">
 
                     <div class="cf-row">
                         <div class="cf-group">
@@ -152,7 +153,6 @@
                         </div>
                     </div>
 
-                    <!-- Row 2 -->
                     <div class="cf-row">
                         <div class="cf-group">
                             <label for="email">Email Address</label>
@@ -618,14 +618,29 @@ document.addEventListener('DOMContentLoaded', function () {
             msg.classList.remove('cf-invalid');
         }
 
-        if (valid) {
+          if (valid) {
+          var formData = new FormData(form);
+          fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+             })
+        .then(function(response) {
+          if (response.ok) {
             form.reset();
             success.style.display = 'flex';
             setTimeout(function () {
                 success.style.display = 'none';
             }, 6000);
-        }
-    });
+           } else {
+            alert('Something went wrong. Please try WhatsApp or call us directly.');
+           }
+           })
+          .catch(function() {
+           alert('Network error. Please try WhatsApp or call us directly.');
+         });
+            }
+          });
 
     var inputs = form.querySelectorAll('input, select, textarea');
     inputs.forEach(function (inp) {
